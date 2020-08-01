@@ -1,19 +1,22 @@
-import React, {Component} from 'react'
-import Table from './Table'
+import React, { Component } from 'react'
+import Table from './components/Table'
+import HelloWorld from './components/HelloWorld'
 
 class App extends Component {
-    render() {
-      return (
-          /*
-        <div className="App">
-          <h1>Hello, React!</h1>
-        </div>
-        */
-        <div className="container">
-        <Table characterData={characters}/>
+  render() {
+    return (
+      <div>
+        <header></header>
+        <main>
+          <HelloWorld></HelloWorld>
+          <div className="container">
+            <Table />
+          </div>
+        </main>
+        <footer></footer>
       </div>
-      )
-    }
+    )
   }
+}
 
-  export default App
+export default App
