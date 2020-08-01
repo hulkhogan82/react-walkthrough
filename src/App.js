@@ -3,8 +3,8 @@ import Table from './components/Table'
 import HelloWorld from './components/HelloWorld'
 
 class App extends Component {
-  render() {
-    const characters= [
+  state = {
+    characters: [
       {
         name: 'Charlie',
         job: 'Janitor',
@@ -21,14 +21,26 @@ class App extends Component {
         name: 'Dennis',
         job: 'Bartender',
       },
-    ];
+    ],
+  }
+  removeCharacter = (index) => {
+    const {characters} = this.state;
+     //filtering
+     const filteredCharacters = characters.filter((character, i) => {
+        return i !== index;
+     });
+     //setting state back for characters
+     this.setState({characters: filteredCharacters});
+  }
+  render() {
+    const {characters} = this.state;
     return (
       <div>
         <header></header>
         <main>
           <HelloWorld></HelloWorld>
           <div className="container">
-            <Table characterData={characters}/>
+            <Table characterData={characters} removeCharacter={this.removeCharacter}/>
           </div>
         </main>
         <footer></footer>
