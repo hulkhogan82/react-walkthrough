@@ -6,6 +6,7 @@ const TableHeader = () => {
       <tr>
         <th>Name</th>
         <th>Job</th>
+        <th>Remove</th>
       </tr>
     </thead>
   )
@@ -18,6 +19,9 @@ const TableBody = (props) => {
       <tr key={index}>
         <td>{row.name}</td>
         <td>{row.job}</td>
+        <td>
+          <button onClick={() => {props.removeCharacter(index)}}>Delete</button>
+        </td>
       </tr>
     )
   });
@@ -25,6 +29,7 @@ const TableBody = (props) => {
   return <tbody>{rows}</tbody>  
 }
 
+/* Table as Class Component
 class Table extends Component {
   render() {
     console.log("Inside Table Component");
@@ -37,6 +42,18 @@ class Table extends Component {
       </table>
     )
   }
+}
+*/
+
+const Table = (props) => {
+  const {characterData, removeCharacter} = props
+  return (
+    <table>
+      <TableHeader></TableHeader>
+      <TableBody characterData={characterData} removeCharacter={removeCharacter}></TableBody>
+    </table>
+  )
+
 }
 
 export default Table
